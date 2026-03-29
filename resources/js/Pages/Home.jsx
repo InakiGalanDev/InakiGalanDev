@@ -1,8 +1,21 @@
+import { useTheme } from '../context/ThemeContext'
+import Navbar from '../Components/Navbar'
+import Hero from '../Components/Hero'
+import About from '../Components/About'
+import Projects from '../Components/Projects'
+import Contact from '../Components/Contact'
+import Footer from '../Components/Footer'
+
 export default function Home() {
+  const { dark } = useTheme()
   return (
-    <div>
-      <h1>¡Hola! Soy [Tu Nombre]</h1>
-      <p>Full Stack Developer — Laravel + React</p>
-    </div>
+    <main className={dark ? 'bg-[#0a0a0a] text-white' : 'bg-white text-slate-900'}>
+      <Navbar />
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
+      <Footer />
+    </main>
   )
 }
