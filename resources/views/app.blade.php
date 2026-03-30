@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Portafolio</title>
+    <title>InakiGalanDev</title>
     @viteReactRefresh
     @vite(['resources/js/app.jsx', 'resources/css/app.css'])
     @inertiaHead
