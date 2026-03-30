@@ -11,56 +11,26 @@ function LaravelIcon() {
 }
 
 const skills = [
-  {
-    type: 'img',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    title: 'Frontend',
-    description: 'React, TypeScript, Tailwind CSS, Vite',
-    bg: 'from-cyan-500 to-blue-500',
-    iconBg: null,
-  },
-  {
-    type: 'laravel',
-    title: 'Backend',
-    description: 'Laravel, PHP, APIs REST, Inertia.js',
-    bg: 'from-red-900 to-red-800',
-    iconBg: '#1a0a0a',
-  },
-  {
-    type: 'lucide',
-    title: 'Base de datos',
-    description: 'MySQL, phpMyAdmin, optimización',
-    bg: 'from-blue-500 to-indigo-500',
-    iconBg: null,
-  },
-  {
-    type: 'img',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-    title: 'DevOps',
-    description: 'Git, GitHub, GitHub Desktop, Docker',
-    bg: 'from-emerald-500 to-teal-500',
-    iconBg: null,
-    invert: true,
-  },
+  { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', title: 'Frontend', description: 'React, TypeScript, Tailwind CSS, Vite', bg: 'from-cyan-500 to-blue-500' },
+  { type: 'laravel', title: 'Backend', description: 'Laravel, PHP, APIs REST, Inertia.jsm Next.js', bg: 'from-red-900 to-red-800' },
+  { type: 'lucide', title: 'Base de datos', description: 'MySQL, phpMyAdmin, optimización', bg: 'from-blue-500 to-indigo-500' },
+  { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', title: 'DevOps', description: 'Git, GitHub, GitHub Desktop, Docker', bg: 'from-emerald-500 to-teal-500', invert: true },
 ]
 
 export default function About() {
   const { dark } = useTheme()
 
   return (
-    <section
-      id="sobre-mi"
-      className={`py-24 px-4 ${dark ? 'bg-[#0d0d0d]' : 'bg-gradient-to-b from-slate-50 to-white'}`}
-    >
+    <section id="sobre-mi" className={`py-16 md:py-24 px-4 ${dark ? 'bg-[#0d0d0d]' : 'bg-gradient-to-b from-slate-50 to-white'}`}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
             Sobre Mí
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full" />
@@ -71,21 +41,20 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto mb-16 text-center"
+          className="max-w-3xl mx-auto mb-10 md:mb-16 text-center"
         >
-          <p className={`text-xl leading-relaxed mb-6 ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
-            Soy un desarrollador Full Stack apasionado por crear soluciones digitales
-            que marcan la diferencia. Me especializo en construir aplicaciones
-            escalables y de alto rendimiento con Laravel y React.
-          </p>
-          <p className={`text-xl leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
-            Mi enfoque combina un diseño elegante con funcionalidad robusta,
-            asegurando que cada proyecto no solo se vea bien, sino que también
-            funcione de manera excepcional.
-          </p>
+            <p className={`text-base md:text-xl leading-relaxed mb-4 md:mb-6 ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
+                Desarrollador Full Stack con experiencia real en producción. He diseñado y desarrollado
+                intranets a medida para empresas, automatizando procesos críticos y eliminando
+                horas de trabajo manual con soluciones digitales eficientes.
+            </p>
+            <p className={`text-base md:text-xl leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
+                También desarrollo productos digitales propios — aplicaciones completas, desde el diseño
+                hasta el despliegue, enfocadas en resolver problemas reales con impacto directo en el usuario.
+            </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.title}
@@ -94,38 +63,27 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className={`relative p-8 rounded-2xl transition-all overflow-hidden group cursor-default ${
-                dark
-                  ? 'bg-white/5 border border-white/10 hover:border-emerald-400/40'
-                  : 'bg-white shadow-lg hover:shadow-2xl'
+              className={`relative p-5 md:p-8 rounded-2xl transition-all overflow-hidden group cursor-default ${
+                dark ? 'bg-white/5 border border-white/10 hover:border-emerald-400/40' : 'bg-white shadow-lg hover:shadow-2xl'
               }`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${skill.bg} opacity-0 group-hover:opacity-10 transition-opacity`} />
-
-              {/* Icon box */}
               <div
-                className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform ${
-                  skill.type === 'laravel'
-                    ? ''
-                    : `bg-gradient-to-br ${skill.bg}`
-                }`}
+                className={`w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-3 md:mb-4 transform group-hover:scale-110 transition-transform`}
                 style={skill.type === 'laravel' ? { background: '#1a0a0a', border: '1px solid rgba(239,68,68,0.3)' } : {}}
               >
-                {skill.type === 'lucide' && <Database className="w-8 h-8 text-white" />}
-                {skill.type === 'laravel' && <LaravelIcon />}
-                {skill.type === 'img' && (
-                  <img
-                    src={skill.icon}
-                    alt={skill.title}
-                    className={`w-8 h-8 ${skill.invert ? 'invert' : ''}`}
-                  />
+                {skill.type !== 'laravel' && (
+                  <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${skill.bg} rounded-xl flex items-center justify-center`}>
+                    {skill.type === 'lucide' && <Database className="w-6 h-6 md:w-8 md:h-8 text-white" />}
+                    {skill.type === 'img' && <img src={skill.icon} alt={skill.title} className={`w-6 h-6 md:w-8 md:h-8 ${skill.invert ? 'invert' : ''}`} />}
+                  </div>
                 )}
+                {skill.type === 'laravel' && <LaravelIcon />}
               </div>
-
-              <h3 className={`text-xl font-bold mb-2 ${dark ? 'text-white' : 'text-slate-800'}`}>
+              <h3 className={`text-base md:text-xl font-bold mb-1 md:mb-2 ${dark ? 'text-white' : 'text-slate-800'}`}>
                 {skill.title}
               </h3>
-              <p className={dark ? 'text-slate-400' : 'text-slate-600'}>
+              <p className={`text-xs md:text-sm ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
                 {skill.description}
               </p>
             </motion.div>

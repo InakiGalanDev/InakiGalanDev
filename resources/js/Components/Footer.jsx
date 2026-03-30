@@ -19,10 +19,10 @@ export default function Footer() {
           <a href="mailto:inakigalandev@gmail.com" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
             <Mail className="w-4 h-4" />
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
+          <a href="https://github.com/InakiGalanDev" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
             <FaGithub className="w-4 h-4" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
+          <a href="https://www.linkedin.com/in/i%C3%B1aki-galan-586a2b228/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
             <FaLinkedin className="w-4 h-4" />
           </a>
         </div>

@@ -509,7 +509,7 @@ const featuredProjects = [
     title: 'Platio',
     subtitle: 'Reserva, pide y saborea',
     description: 'Plataforma todo-en-uno para restaurantes: gestión de comandas, reservas, carta digital, pedidos online y control de stock. Los clientes pueden reservar mesa y hacer pedidos directamente desde la app.',
-    tags: ['Laravel', 'React', 'MySQL', 'phpMyAdmin'],
+    tags: ['Laravel', 'React', 'MySQL', 'phpMyAdmin', 'React Natvie'],
     screens: [PlatioScreen1, PlatioScreen2, PlatioScreen3, PlatioScreen4],
     screenLabels: ['Dashboard', 'Reservas', 'Carta digital', 'Pedidos online'],
     gradient: 'from-orange-500 to-amber-500',
@@ -521,7 +521,7 @@ const featuredProjects = [
     title: 'TurnoClick',
     subtitle: 'Turnos, nóminas y más',
     description: 'Sistema completo de gestión de empleados: turnos semanales, fichajes, vacaciones, nóminas y contratos en un solo lugar. Reduce la carga administrativa y mantén tu equipo organizado.',
-    tags: ['Laravel', 'React', 'MySQL', 'TypeScript'],
+    tags: ['Nextjs', 'React', 'MySQL', 'TypeScript'],
     screens: [TurnoScreen1, TurnoScreen2, TurnoScreen3, TurnoScreen4],
     screenLabels: ['Dashboard', 'Turnos', 'Nóminas', 'Vacaciones'],
     gradient: 'from-indigo-500 to-violet-500',
@@ -561,7 +561,9 @@ function MockupCarousel({ project }) {
         <Screen />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
-
+          <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold mb-3`} style={{color:'#fff'}}>
+            Proyecto Destacado
+          </div>
           <h3 className="text-3xl font-black mb-1">{project.title}</h3>
           <p style={{color: project.color}} className="text-sm font-semibold mb-3">{project.subtitle}</p>
           <p className="text-slate-200 text-sm leading-relaxed mb-4 max-w-2xl">{project.description}</p>
@@ -603,84 +605,160 @@ function MockupCarousel({ project }) {
   )
 }
 
+// ── MOBILE CARDS ───────────────────────────────────────────────
+const mobileProjects = [
+  { title: 'Platio', subtitle: 'Reserva, pide y saborea', description: 'Plataforma todo-en-uno para restaurantes: comandas, reservas, carta digital, pedidos online y control de stock.', tags: ['Laravel', 'React', 'MySQL'], color: '#f97316', gradient: 'from-orange-500 to-amber-500', icon: '🍽️' },
+  { title: 'TurnoClick', subtitle: 'Turnos, nóminas y más', description: 'Sistema completo de gestión de empleados: turnos, fichajes, vacaciones, nóminas y contratos en un solo lugar.', tags: ['Laravel', 'React', 'TypeScript'], color: '#6366f1', gradient: 'from-indigo-500 to-violet-500', icon: '👥' },
+  { title: 'Tandem', subtitle: 'Gestión de proyectos con IA', description: 'El cliente ve el progreso en tiempo real. La IA divide fases, gestiona presupuestos y centraliza la comunicación.', tags: ['Laravel', 'React', 'IA'], color: '#8b5cf6', gradient: 'from-violet-500 to-cyan-500', icon: '🤖' },
+]
+
+function MobileProjects({ dark }) {
+  return (
+    <div className="flex flex-col gap-6">
+      {mobileProjects.map((project, index) => (
+        <motion.div
+          key={project.title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className={`rounded-2xl overflow-hidden ${dark ? 'bg-white/5 border border-white/10' : 'bg-white shadow-lg border border-slate-100'}`}
+        >
+          <div className={`bg-gradient-to-r ${project.gradient} p-6 flex items-center gap-4`}>
+            <span className="text-4xl">{project.icon}</span>
+            <div>
+              <h3 className="text-xl font-black text-white">{project.title}</h3>
+              <p className="text-white/80 text-sm">{project.subtitle}</p>
+            </div>
+          </div>
+          <div className="p-5">
+            <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{project.description}</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tags.map(tag => (
+                <span key={tag} className="px-3 py-1 bg-emerald-400/10 text-emerald-400 rounded-full text-xs font-mono">{tag}</span>
+              ))}
+            </div>
+            <div className="flex gap-3">
+              <button className={`flex items-center gap-2 text-sm font-semibold transition-colors ${dark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-500 hover:text-emerald-600'}`}>
+                <FaGithub size={14} /> Código
+              </button>
+              <button className="flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                <ExternalLink className="w-3 h-3" /> Demo
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 export default function Projects() {
   const { dark } = useTheme()
   const [activeProject, setActiveProject] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   return (
-    <section
-      id="proyectos"
-      className={`py-24 px-4 ${dark ? 'bg-[#0a0a0a]' : 'bg-gradient-to-b from-white to-slate-50'}`}
-    >
+    <section id="proyectos" className={`py-16 md:py-24 px-4 ${dark ? 'bg-[#0a0a0a]' : 'bg-gradient-to-b from-white to-slate-50'}`}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10 md:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
             Proyectos Destacados
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-6" />
-          <p className={`text-xl max-w-2xl mx-auto ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
+          <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-4 md:mb-6" />
+          <p className={`text-base md:text-xl max-w-2xl mx-auto ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
             Soluciones reales desarrolladas para resolver problemas de negocio
           </p>
         </motion.div>
 
-       
+        {/* Mobile version */}
+        {isMobile ? (
+          <MobileProjects dark={dark} />
+        ) : (
+          <>
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {featuredProjects.map((project, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveProject(index)}
+                  className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+                    activeProject === index
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25'
+                      : dark
+                        ? 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
+                        : 'bg-white text-slate-600 border border-slate-200 shadow-sm hover:text-slate-900'
+                  }`}
+                >
+                  {project.title}
+                </button>
+              ))}
+            </div>
 
-        <motion.div
-          key={activeProject}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <MockupCarousel project={featuredProjects[activeProject]} />
-        </motion.div>
+            <motion.div
+              key={activeProject}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="mb-12"
+            >
+              <MockupCarousel project={featuredProjects[activeProject]} />
+            </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {featuredProjects.map((project, index) => {
-            const PreviewScreen = project.screens[0]
-            return (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setActiveProject(index)}
-                className={`group rounded-2xl overflow-hidden transition-all cursor-pointer ${
-                  activeProject === index
-                    ? 'ring-2 ring-emerald-400 shadow-lg'
-                    : dark
-                      ? 'bg-white/5 border border-white/10 hover:border-emerald-400/40'
-                      : 'bg-white shadow-lg hover:shadow-xl border border-slate-100'
-                }`}
-              >
-                <div className="relative overflow-hidden" style={{ height: '130px', pointerEvents: 'none' }}>
-                  <div style={{ transform: 'scale(0.52)', transformOrigin: 'top left', width: '192%', height: '192%' }}>
-                    <PreviewScreen />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute bottom-2 left-3">
-                    <p className="text-white font-black text-sm">{project.title}</p>
-                    <p className="text-xs" style={{ color: project.color }}>{project.subtitle}</p>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="px-2 py-0.5 bg-emerald-400/10 text-emerald-400 rounded-full text-xs font-mono">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {featuredProjects.map((project, index) => {
+                const PreviewScreen = project.screens[0]
+                return (
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onClick={() => setActiveProject(index)}
+                    className={`group rounded-2xl overflow-hidden transition-all cursor-pointer ${
+                      activeProject === index
+                        ? 'ring-2 ring-emerald-400 shadow-lg'
+                        : dark
+                          ? 'bg-white/5 border border-white/10 hover:border-emerald-400/40'
+                          : 'bg-white shadow-lg hover:shadow-xl border border-slate-100'
+                    }`}
+                  >
+                    <div className="relative overflow-hidden" style={{ height: '130px', pointerEvents: 'none' }}>
+                      <div style={{ transform: 'scale(0.52)', transformOrigin: 'top left', width: '192%', height: '192%' }}>
+                        <PreviewScreen />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                      <div className="absolute bottom-2 left-3">
+                        <p className="text-white font-black text-sm">{project.title}</p>
+                        <p className="text-xs" style={{ color: project.color }}>{project.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.slice(0, 3).map(tag => (
+                          <span key={tag} className="px-2 py-0.5 bg-emerald-400/10 text-emerald-400 rounded-full text-xs font-mono">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </>
+        )}
       </div>
     </section>
   )
