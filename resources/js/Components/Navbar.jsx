@@ -27,7 +27,7 @@ export default function Navbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="text-xl font-black">
-            <span className={dark ? 'text-white' : 'text-slate-900'}>InakiGalan</span>
+            <span className={dark ? 'text-white' : 'text-slate-900'}>IñakiGalan</span>
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Dev</span>
         </a>
 
