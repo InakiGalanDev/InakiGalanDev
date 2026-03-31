@@ -11,7 +11,8 @@ const featuredProjects = [
     description: 'Plataforma donde el cliente ve en tiempo real el progreso de su software. La IA divide el proyecto en fases automáticamente, gestiona presupuestos y centraliza la comunicación programador-cliente.',
     tags: ['Next.js', 'Supabase', 'TypeScript', 'PostgreSQL', 'Claude API'],
     images: [
-      '/img/Tandem\\landingPage.png',
+          '/img/Tandem/landingPage.png',
+
     ],
     screenLabels: ['Landing'],
     gradient: 'from-red-600 to-rose-500',
