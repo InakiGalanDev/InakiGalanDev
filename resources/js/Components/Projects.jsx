@@ -15,6 +15,7 @@ const featuredProjects = [
 
     ],
     screenLabels: ['Landing'],
+    status: 'En desarrollo',
     gradient: 'from-red-600 to-rose-500',
     color: '#E8352A',
     github: 'https://github.com/InakiGalanDev/tandem-app',
@@ -52,8 +53,16 @@ function ImageCarousel({ project }) {
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
-        <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold mb-3`}>
-          Proyecto Destacado
+        <div className="flex items-center gap-2 mb-3">
+            <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold`}>
+                Proyecto Destacado
+            </div>
+            {project.status && (
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 border border-amber-500/40 rounded-full text-xs font-bold text-amber-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse inline-block"></span>
+                {project.status}
+                </div>
+            )}
         </div>
         <h3 className="text-3xl font-black mb-1">{project.title}</h3>
         <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{project.subtitle}</p>
