@@ -9,7 +9,7 @@ const featuredProjects = [
     title: 'Tandem',
     subtitle: 'Gestión de proyectos con IA',
     description: 'Plataforma donde el cliente ve en tiempo real el progreso de su software. La IA divide el proyecto en fases automáticamente, gestiona presupuestos y centraliza la comunicación programador-cliente.',
-    tags: ['Next.js', 'Supabase', 'TypeScript', 'PostgreSQL', 'Claude API'],
+    tags: ['Laravel', 'React','Supabase', 'TypeScript', 'PostgreSQL'],
     images: [
           '/img/Tandem/LandingPage.png',
 
@@ -19,7 +19,7 @@ const featuredProjects = [
     gradient: 'from-red-600 to-rose-500',
     color: '#E8352A',
     github: 'https://github.com/InakiGalanDev/tandem-app',
-    demo: 'https://tandem-app-psi.vercel.app/',
+    demo: 'https://tandem-main-kk8oxg.laravel.cloud/',
   },
 ]
 
