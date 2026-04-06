@@ -18,7 +18,7 @@ const featuredProjects = [
     status: 'En desarrollo',
     gradient: 'from-red-600 to-rose-500',
     color: '#E8352A',
-    github: 'https://github.com/InakiGalanDev/tandem-app',
+    github: 'https://github.com/InakiGalanDev/tandem',
     demo: 'https://tandem-main-kk8oxg.laravel.cloud/',
   },
 ]
