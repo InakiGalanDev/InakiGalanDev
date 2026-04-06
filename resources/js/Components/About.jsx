@@ -12,7 +12,7 @@ function LaravelIcon() {
 
 const skills = [
   { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', title: 'Frontend', description: 'React, TypeScript, Tailwind CSS, Vite', bg: 'from-cyan-500 to-blue-500' },
-  { type: 'laravel', title: 'Backend', description: 'Laravel, PHP, APIs REST, Inertia.jsm Next.js', bg: 'from-red-900 to-red-800' },
+  { type: 'laravel', title: 'Backend', description: 'Laravel, PHP, APIs REST, Inertia.jsm, Next.js', bg: 'from-red-900 to-red-800' },
   { type: 'lucide', title: 'Base de datos', description: 'MySQL, phpMyAdmin, optimización', bg: 'from-blue-500 to-indigo-500' },
   { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', title: 'DevOps', description: 'Git, GitHub, GitHub Desktop, Docker', bg: 'from-emerald-500 to-teal-500', invert: true },
 ]
