@@ -28,20 +28,22 @@
 
     <!-- Schema.org (datos estructurados para Google) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Iñaki Galan",
-      "url": "https://inakigalandev-main-i5kai4.laravel.cloud/",
-      "jobTitle": "Desarrollador Full Stack",
-      "knowsAbout": ["Laravel", "React", "PHP", "MySQL", "TypeScript", "JavaScript", "Inertia.js"],
-      "description": "Desarrollador Full Stack especializado en Laravel y React. Creo aplicaciones web escalables e intranets a medida para empresas.",
-      "email": "inakigalandev@gmail.com",
-      "nationality": "Spanish",
-      "sameAs": [
-        "https://github.com/InakiGalanDev"
-      ]
-    }
+        @verbatim
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Iñaki Galan",
+          "url": "https://inakigalandev-main-i5kai4.laravel.cloud/",
+          "jobTitle": "Desarrollador Full Stack",
+          "knowsAbout": ["Laravel", "React", "PHP", "MySQL", "TypeScript", "JavaScript", "Inertia.js"],
+          "description": "Desarrollador Full Stack especializado en Laravel y React. Creo aplicaciones web escalables e intranets a medida para empresas.",
+          "email": "inakigalandev@gmail.com",
+          "nationality": "Spanish",
+          "sameAs": [
+            "https://github.com/InakiGalanDev"
+          ]
+        }
+        @endverbatim
     </script>
 
     @viteReactRefresh
