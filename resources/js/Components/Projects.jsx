@@ -6,6 +6,22 @@ import { useTheme } from '../context/ThemeContext'
 
 const featuredProjects = [
   {
+    title: 'Mas Consulting',
+    subtitle: 'Asesoría fiscal, contable, laboral y jurídica',
+    description: 'Proyecto real entregado a un cliente: asesoría fiscal, contable, laboral y jurídica. Sitio corporativo multi-idioma en producción, con captación de leads vía formulario de contacto.',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    images: [
+          '/img/MasConsulting/LandingPage.png',
+
+    ],
+    screenLabels: ['Landing'],
+    status: 'En producción',
+    gradient: 'from-amber-700 to-stone-500',
+    color: '#F2B754',
+    github: null,
+    demo: 'https://www.masconsulting.cat/',
+  },
+  {
     title: 'Tandem',
     subtitle: 'Gestión de proyectos con IA',
     description: 'Plataforma donde el cliente ve en tiempo real el progreso de su software. La IA divide el proyecto en fases automáticamente, gestiona presupuestos y centraliza la comunicación programador-cliente.',
@@ -54,15 +70,19 @@ function ImageCarousel({ project }) {
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
         <div className="flex items-center gap-2 mb-3">
-            <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold`}>
+            {/* <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold`}>
                 Proyecto Destacado
             </div>
             {project.status && (
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 border border-amber-500/40 rounded-full text-xs font-bold text-amber-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse inline-block"></span>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
+                  project.status === 'En producción'
+                    ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
+                    : 'bg-amber-500/20 border border-amber-500/40 text-amber-400'
+                }`}>
+                <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${project.status === 'En producción' ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
                 {project.status}
                 </div>
-            )}
+            )} */}
         </div>
         <h3 className="text-3xl font-black mb-1">{project.title}</h3>
         <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{project.subtitle}</p>
@@ -73,19 +93,23 @@ function ImageCarousel({ project }) {
           ))}
         </div>
         <div className="flex gap-3">
-          <a
-            href={project.github}
-            className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
-          >
-            <FaGithub size={14} /> Ver Código
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
+            >
+              <FaGithub size={14} /> Ver Código
+            </a>
+          )}
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
           >
-            <ExternalLink className="w-4 h-4" /> Demo en Vivo
+            <ExternalLink className="w-4 h-4" /> {project.status === 'En producción' ? 'Ver Sitio Real' : 'Demo en Vivo'}
           </a>
         </div>
       </div>
@@ -152,18 +176,20 @@ function MobileProjects({ dark }) {
               ))}
             </div>
             <div className="flex gap-3">
-                <a href={project.github}
-                    onClick={e => { e.preventDefault(); window.open(project.github, '_blank') }}
-                    className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
-                    >
-                    <FaGithub size={14} /> Ver Código
-                </a>
+                {project.github && (
+                    <a href={project.github}
+                        onClick={e => { e.preventDefault(); window.open(project.github, '_blank') }}
+                        className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
+                        >
+                        <FaGithub size={14} /> Ver Código
+                    </a>
+                )}
 
                 <a href={project.demo}
                     onClick={e => { e.preventDefault(); window.open(project.demo, '_blank') }}
                     className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
                     >
-                    <ExternalLink className="w-4 h-4" /> Demo en Vivo
+                    <ExternalLink className="w-4 h-4" /> {project.status === 'En producción' ? 'Ver Sitio Real' : 'Demo en Vivo'}
                 </a>
 
             </div>
@@ -218,7 +244,7 @@ export default function Projects() {
                     onClick={() => setActiveProject(index)}
                     className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                       activeProject === index
-                        ? 'bg-gradient-to-r from-red-600 to-rose-500 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
                         : dark
                           ? 'bg-white/5 text-slate-400 hover:text-white border border-white/10'
                           : 'bg-white text-slate-600 border border-slate-200 shadow-sm hover:text-slate-900'
@@ -253,9 +279,9 @@ export default function Projects() {
                     onClick={() => setActiveProject(index)}
                     className={`group rounded-2xl overflow-hidden transition-all cursor-pointer ${
                       activeProject === index
-                        ? 'ring-2 ring-red-500 shadow-lg'
+                        ? 'ring-2 ring-emerald-500 shadow-lg'
                         : dark
-                          ? 'bg-white/5 border border-white/10 hover:border-red-500/40'
+                          ? 'bg-white/5 border border-white/10 hover:border-emerald-500/40'
                           : 'bg-white shadow-lg hover:shadow-xl border border-slate-100'
                     }`}
                   >

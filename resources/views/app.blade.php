@@ -17,14 +17,14 @@
     <meta property="og:url" content="https://inakigalandev-main-i5kai4.laravel.cloud/" />
     <meta property="og:title" content="Iñaki Galan — Desarrollador Full Stack Laravel & React" />
     <meta property="og:description" content="Desarrollador Full Stack especializado en Laravel y React. Aplicaciones web escalables, intranets a medida y productos digitales." />
-    <meta property="og:image" content="https://inakigalandev-main-i5kai4.laravel.cloud/img/Tandem/LandingPage.png" />
+    <meta property="og:image" content="https://inakigalandev-main-i5kai4.laravel.cloud/img/MasConsulting/LandingPage.png" />
     <meta property="og:locale" content="es_ES" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Iñaki Galan — Desarrollador Full Stack Laravel & React" />
     <meta name="twitter:description" content="Desarrollador Full Stack especializado en Laravel y React. Aplicaciones web escalables, intranets a medida y productos digitales." />
-    <meta name="twitter:image" content="https://inakigalandev-main-i5kai4.laravel.cloud/img/Tandem/LandingPage.png" />
+    <meta name="twitter:image" content="https://inakigalandev-main-i5kai4.laravel.cloud/img/MasConsulting/LandingPage.png" />
 
     <!-- Schema.org (datos estructurados para Google) -->
     <script type="application/ld+json">
