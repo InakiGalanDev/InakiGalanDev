@@ -22,6 +22,22 @@ const featuredProjects = [
     demo: 'https://www.masconsulting.cat/',
   },
   {
+    title: 'Miquel Mas Arquitectes',
+    subtitle: 'Estudio de arquitectura en Vilanova i la Geltrú',
+    description: 'Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano.',
+    tags: ['React', 'Vite', 'React Router', 'i18n'],
+    images: [
+          '/img/MiquelMas/LandingPage.png',
+
+    ],
+    screenLabels: ['Landing'],
+    status: 'En producción',
+    gradient: 'from-stone-700 to-neutral-500',
+    color: '#D6D3D1',
+    github: null,
+    demo: 'https://miquelmas.com/',
+  },
+  {
     title: 'Tandem',
     subtitle: 'Gestión de proyectos con IA',
     description: 'Plataforma donde el cliente ve en tiempo real el progreso de su software. La IA divide el proyecto en fases automáticamente, gestiona presupuestos y centraliza la comunicación programador-cliente.',
