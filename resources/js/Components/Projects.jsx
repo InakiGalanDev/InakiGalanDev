@@ -35,7 +35,7 @@ const featuredProjects = [
     gradient: 'from-stone-700 to-neutral-500',
     color: '#D6D3D1',
     github: null,
-    demo: 'https://miquelmas.com/',
+    demo: '#',
   },
   {
     title: 'Tandem',
