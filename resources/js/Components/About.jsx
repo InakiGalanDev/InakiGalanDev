@@ -12,7 +12,7 @@ function LaravelIcon() {
 
 const skills = [
   { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', title: 'Frontend', description: 'React, TypeScript, Tailwind CSS, Vite', bg: 'from-cyan-500 to-blue-500' },
-  { type: 'laravel', title: 'Backend', description: 'Laravel, PHP, APIs REST, Inertia.jsm, Next.js', bg: 'from-red-900 to-red-800' },
+  { type: 'laravel', title: 'Backend', description: 'Laravel, PHP, APIs REST, Inertia.js, Next.js', bg: 'from-red-900 to-red-800' },
   { type: 'lucide', title: 'Base de datos', description: 'MySQL, phpMyAdmin, optimización', bg: 'from-blue-500 to-indigo-500' },
   { type: 'img', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', title: 'DevOps', description: 'Git, GitHub, GitHub Desktop, Docker', bg: 'from-emerald-500 to-teal-500', invert: true },
 ]
@@ -51,6 +51,10 @@ export default function About() {
             <p className={`text-base md:text-xl leading-relaxed ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
                 También desarrollo productos digitales propios — aplicaciones completas, desde el diseño
                 hasta el despliegue, enfocadas en resolver problemas reales con impacto directo en el usuario.
+            </p>
+            <p className={`text-base md:text-xl leading-relaxed mt-4 md:mt-6 ${dark ? 'text-slate-300' : 'text-slate-700'}`}>
+                Integro IA en mis proyectos: con <span className="text-emerald-400 font-semibold">Claude</span> y tareas
+                programadas, las webs de mis clientes generan y mantienen su contenido de forma autónoma.
             </p>
         </motion.div>
 

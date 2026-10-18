@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ExternalLink, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import { useTheme } from '../context/ThemeContext'
 
@@ -8,8 +8,9 @@ const featuredProjects = [
   {
     title: 'Mas Consulting',
     subtitle: 'Asesoría fiscal, contable, laboral y jurídica',
-    description: 'Proyecto real entregado a un cliente: asesoría fiscal, contable, laboral y jurídica. Sitio corporativo multi-idioma en producción, con captación de leads vía formulario de contacto.',
-    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    description: 'Proyecto real entregado a un cliente: asesoría fiscal, contable, laboral y jurídica. Sitio corporativo multi-idioma en producción, con captación de leads vía formulario de contacto. El equipo y los proyectos se generan y actualizan de forma autónoma con IA (Claude) mediante una tarea programada.',
+    ai: 'Contenido autónomo con Claude',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Claude AI'],
     images: [
           '/img/MasConsulting/LandingPage.png',
 
@@ -24,8 +25,9 @@ const featuredProjects = [
   {
     title: 'Miquel Mas Arquitectes',
     subtitle: 'Estudio de arquitectura en Vilanova i la Geltrú',
-    description: 'Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano.',
-    tags: ['React', 'Vite', 'React Router', 'i18n'],
+    description: 'Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano. El equipo y los proyectos se generan y actualizan de forma autónoma con IA (Claude) mediante una tarea programada.',
+    ai: 'Contenido autónomo con Claude',
+    tags: ['React', 'Vite', 'React Router', 'i18n', 'Claude AI'],
     images: [
           '/img/MiquelMas/LandingPage.png',
 
@@ -36,23 +38,7 @@ const featuredProjects = [
     color: '#D6D3D1',
     github: null,
     demo: '#',
-  },
-  {
-    title: 'Tandem',
-    subtitle: 'Gestión de proyectos con IA',
-    description: 'Plataforma donde el cliente ve en tiempo real el progreso de su software. La IA divide el proyecto en fases automáticamente, gestiona presupuestos y centraliza la comunicación programador-cliente.',
-    tags: ['Laravel', 'React','Supabase', 'TypeScript', 'PostgreSQL'],
-    images: [
-          '/img/Tandem/LandingPage.png',
-
-    ],
-    screenLabels: ['Landing'],
-    status: 'En desarrollo',
-    gradient: 'from-red-600 to-rose-500',
-    color: '#E8352A',
-    github: 'https://github.com/InakiGalanDev/tandem',
-    demo: 'https://tandem-main-kk8oxg.laravel.cloud/',
-  },
+  }
 ]
 
 function ImageCarousel({ project }) {
@@ -100,6 +86,11 @@ function ImageCarousel({ project }) {
                 </div>
             )} */}
         </div>
+        {project.ai && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-emerald-500/20 border border-emerald-400/40 text-emerald-300">
+            <Sparkles className="w-3.5 h-3.5" /> {project.ai}
+          </div>
+        )}
         <h3 className="text-3xl font-black mb-1">{project.title}</h3>
         <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{project.subtitle}</p>
         <p className="text-slate-200 text-sm leading-relaxed mb-4 max-w-2xl">{project.description}</p>
@@ -185,6 +176,11 @@ function MobileProjects({ dark }) {
             </div>
           </div>
           <div className="p-5">
+            {project.ai && (
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-400/40 text-emerald-500">
+                <Sparkles className="w-3.5 h-3.5" /> {project.ai}
+              </div>
+            )}
             <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tags.map(tag => (

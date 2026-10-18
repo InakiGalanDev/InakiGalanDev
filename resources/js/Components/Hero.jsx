@@ -69,8 +69,9 @@ export default function Hero() {
             className="text-base md:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto px-4"
           >
             Transformo ideas en experiencias digitales excepcionales con{' '}
-            <span className="text-emerald-400 font-semibold">Laravel</span> y{' '}
-            <span className="text-emerald-400 font-semibold">React</span>.
+            <span className="text-emerald-400 font-semibold">Laravel</span>,{' '}
+            <span className="text-emerald-400 font-semibold">React</span> e{' '}
+            <span className="text-emerald-400 font-semibold">IA</span>.
           </motion.p>
 
           <motion.div
