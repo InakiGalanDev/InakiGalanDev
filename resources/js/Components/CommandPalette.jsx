@@ -75,7 +75,7 @@ export default function CommandPalette() {
     },
     { id: 'send-email', group: g('contact'), label: t('palette.sendEmail'), icon: Mail, run: () => { window.location.href = `mailto:${EMAIL}` } },
     { id: 'github', group: g('contact'), label: 'GitHub', hint: 'InakiGalanDev', icon: FaGithub, run: () => window.open('https://github.com/InakiGalanDev', '_blank', 'noopener') },
-    { id: 'linkedin', group: g('contact'), label: 'LinkedIn', icon: FaLinkedin, run: () => window.open('https://www.linkedin.com/in/i%C3%B1aki-galan-586a2b228/', '_blank', 'noopener') },
+    { id: 'linkedin', group: g('contact'), label: 'LinkedIn', icon: FaLinkedin, run: () => window.open('https://www.linkedin.com/in/inakigalandev', '_blank', 'noopener') },
     { id: 'theme', group: g('preferences'), label: dark ? t('palette.lightMode') : t('palette.darkMode'), icon: dark ? Sun : Moon, run: toggleTheme },
     ...LOCALES.filter(l => l !== locale).map(l => ({
       id: `lang-${l}`,

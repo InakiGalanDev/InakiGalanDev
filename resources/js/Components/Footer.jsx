@@ -11,7 +11,7 @@ const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigat
 const SOCIALS = [
   { label: 'Email', href: 'mailto:inakigalandev@gmail.com', icon: Mail },
   { label: 'GitHub', href: 'https://github.com/InakiGalanDev', icon: FaGithub },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/i%C3%B1aki-galan-586a2b228/', icon: FaLinkedin },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/inakigalandev', icon: FaLinkedin },
 ]
 
 export default function Footer() {

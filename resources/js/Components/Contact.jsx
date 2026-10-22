@@ -9,7 +9,7 @@ import { trackSpotlight } from '../utils/spotlight'
 
 const EMAIL = 'inakigalandev@gmail.com'
 const SOCIALS = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/i%C3%B1aki-galan-586a2b228/', icon: FaLinkedin },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/inakigalandev', icon: FaLinkedin },
   { name: 'GitHub', href: 'https://github.com/InakiGalanDev', icon: FaGithub },
 ]
 
