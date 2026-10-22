@@ -1,47 +1,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { ExternalLink, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
+import { Link } from '@inertiajs/react'
+import { ExternalLink, ChevronLeft, ChevronRight, Sparkles, ArrowRight } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import { useTheme } from '../context/ThemeContext'
-
-const featuredProjects = [
-  {
-    title: 'Mas Consulting',
-    subtitle: 'Asesoría fiscal, contable, laboral y jurídica',
-    description: 'Proyecto real entregado a un cliente: asesoría fiscal, contable, laboral y jurídica. Sitio corporativo multi-idioma en producción, con captación de leads vía formulario de contacto. El equipo y los proyectos se generan y actualizan de forma autónoma con IA (Claude) mediante una tarea programada.',
-    ai: 'Contenido autónomo con Claude',
-    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Claude AI'],
-    images: [
-          '/img/MasConsulting/LandingPage.png',
-
-    ],
-    screenLabels: ['Landing'],
-    status: 'En producción',
-    gradient: 'from-amber-700 to-stone-500',
-    color: '#F2B754',
-    github: null,
-    demo: 'https://www.masconsulting.cat/',
-  },
-  {
-    title: 'Miquel Mas Arquitectes',
-    subtitle: 'Estudio de arquitectura en Vilanova i la Geltrú',
-    description: 'Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano. El equipo y los proyectos se generan y actualizan de forma autónoma con IA (Claude) mediante una tarea programada.',
-    ai: 'Contenido autónomo con Claude',
-    tags: ['React', 'Vite', 'React Router', 'i18n', 'Claude AI'],
-    images: [
-          '/img/MiquelMas/LandingPage.png',
-
-    ],
-    screenLabels: ['Landing'],
-    status: 'En producción',
-    gradient: 'from-stone-700 to-neutral-500',
-    color: '#D6D3D1',
-    github: null,
-    demo: '#',
-  }
-]
+import { featuredProjects, isLive } from '../data/projects'
+import { trackSpotlight } from '../utils/spotlight'
+import { useI18n, projectUrl } from '../i18n'
 
 function ImageCarousel({ project }) {
+  const { locale, t, tr } = useI18n()
   const [current, setCurrent] = useState(0)
   const total = project.images.length
 
@@ -87,19 +55,25 @@ function ImageCarousel({ project }) {
             )} */}
         </div>
         {project.ai && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-emerald-500/20 border border-emerald-400/40 text-emerald-300">
-            <Sparkles className="w-3.5 h-3.5" /> {project.ai}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/20">
+            <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
           </div>
         )}
         <h3 className="text-3xl font-black mb-1">{project.title}</h3>
-        <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{project.subtitle}</p>
-        <p className="text-slate-200 text-sm leading-relaxed mb-4 max-w-2xl">{project.description}</p>
+        <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{tr(project.subtitle)}</p>
+        <p className="text-slate-200 text-sm leading-relaxed mb-4 max-w-2xl">{tr(project.description)}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map(tag => (
             <span key={tag} className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">{tag}</span>
           ))}
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href={projectUrl(locale, project.slug)}
+            className="flex items-center gap-2 px-5 py-2 bg-emerald-500 text-white rounded-full font-bold text-sm hover:bg-emerald-400 transition-all"
+          >
+            {t('projects.viewCase')} <ArrowRight className="w-4 h-4" />
+          </Link>
           {project.github && (
             <a
               href={project.github}
@@ -107,17 +81,19 @@ function ImageCarousel({ project }) {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
             >
-              <FaGithub size={14} /> Ver Código
+              <FaGithub size={14} /> {t('projects.viewCode')}
             </a>
           )}
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
-          >
-            <ExternalLink className="w-4 h-4" /> {project.status === 'En producción' ? 'Ver Sitio Real' : 'Demo en Vivo'}
-          </a>
+          {isLive(project.demo) && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
+            >
+              <ExternalLink className="w-4 h-4" /> {project.status === 'production' ? t('projects.viewSite') : t('projects.liveDemo')}
+            </a>
+          )}
         </div>
       </div>
 
@@ -156,6 +132,7 @@ function ImageCarousel({ project }) {
 
 // ── MOBILE VERSION ──────────────────────────────────────────────
 function MobileProjects({ dark }) {
+  const { locale, t, tr } = useI18n()
   return (
     <div className="flex flex-col gap-6">
       {featuredProjects.map((project, index) => (
@@ -172,37 +149,49 @@ function MobileProjects({ dark }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
             <div className="absolute bottom-3 left-4">
               <h3 className="text-xl font-black text-white">{project.title}</h3>
-              <p className="text-sm" style={{ color: project.color }}>{project.subtitle}</p>
+              <p className="text-sm" style={{ color: project.color }}>{tr(project.subtitle)}</p>
             </div>
           </div>
           <div className="p-5">
             {project.ai && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-400/40 text-emerald-500">
-                <Sparkles className="w-3.5 h-3.5" /> {project.ai}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/20">
+                <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
               </div>
             )}
-            <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{project.description}</p>
+            <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{tr(project.description)}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tags.map(tag => (
                 <span key={tag} className="px-3 py-1 bg-red-400/10 text-red-400 rounded-full text-xs font-mono">{tag}</span>
               ))}
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
+                <Link
+                    href={projectUrl(locale, project.slug)}
+                    className="flex items-center gap-2 px-5 py-2 bg-emerald-500 text-white rounded-full font-bold text-sm hover:bg-emerald-400 transition-all"
+                    >
+                    {t('projects.viewCase')} <ArrowRight className="w-4 h-4" />
+                </Link>
                 {project.github && (
                     <a href={project.github}
                         onClick={e => { e.preventDefault(); window.open(project.github, '_blank') }}
-                        className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
+                        className={`flex items-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
+                          dark ? 'bg-white text-slate-900 hover:bg-slate-100' : 'border border-slate-300 text-slate-900 hover:bg-slate-50'
+                        }`}
                         >
-                        <FaGithub size={14} /> Ver Código
+                        <FaGithub size={14} /> {t('projects.viewCode')}
                     </a>
                 )}
 
-                <a href={project.demo}
-                    onClick={e => { e.preventDefault(); window.open(project.demo, '_blank') }}
-                    className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
-                    >
-                    <ExternalLink className="w-4 h-4" /> {project.status === 'En producción' ? 'Ver Sitio Real' : 'Demo en Vivo'}
-                </a>
+                {isLive(project.demo) && (
+                  <a href={project.demo}
+                      onClick={e => { e.preventDefault(); window.open(project.demo, '_blank') }}
+                      className={`flex items-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
+                        dark ? 'bg-white/20 backdrop-blur-sm text-white hover:bg-white/30' : 'bg-slate-900 text-white hover:bg-slate-700'
+                      }`}
+                      >
+                      <ExternalLink className="w-4 h-4" /> {project.status === 'production' ? t('projects.viewSite') : t('projects.liveDemo')}
+                  </a>
+                )}
 
             </div>
           </div>
@@ -214,6 +203,7 @@ function MobileProjects({ dark }) {
 
 export default function Projects() {
   const { dark } = useTheme()
+  const { t, tr } = useI18n()
   const [activeProject, setActiveProject] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -235,11 +225,11 @@ export default function Projects() {
           className="text-center mb-10 md:mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-4">
-            Proyectos Destacados
+            {t('projects.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 mx-auto rounded-full mb-4 md:mb-6" />
           <p className={`text-base md:text-xl max-w-2xl mx-auto ${dark ? 'text-slate-400' : 'text-slate-600'}`}>
-            Soluciones reales desarrolladas para resolver problemas de negocio
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -289,7 +279,8 @@ export default function Projects() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     onClick={() => setActiveProject(index)}
-                    className={`group rounded-2xl overflow-hidden transition-all cursor-pointer ${
+                    onMouseMove={trackSpotlight}
+                    className={`group relative rounded-2xl overflow-hidden transition-all cursor-pointer ${
                       activeProject === index
                         ? 'ring-2 ring-emerald-500 shadow-lg'
                         : dark
@@ -297,12 +288,13 @@ export default function Projects() {
                           : 'bg-white shadow-lg hover:shadow-xl border border-slate-100'
                     }`}
                   >
+                    <div className="spotlight absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     <div className="relative h-32 overflow-hidden">
                       <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                       <div className="absolute bottom-2 left-3">
                         <p className="text-white font-black text-sm">{project.title}</p>
-                        <p className="text-xs" style={{ color: project.color }}>{project.subtitle}</p>
+                        <p className="text-xs" style={{ color: project.color }}>{tr(project.subtitle)}</p>
                       </div>
                     </div>
                     <div className="p-4">

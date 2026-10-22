@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://inakigalandev-main-i5kai4.laravel.cloud/sitemap.xml

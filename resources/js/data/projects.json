@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "mas-consulting",
+    "title": "Mas Consulting",
+    "subtitle": {
+      "es": "Asesoría fiscal, contable, laboral y jurídica",
+      "ca": "Assessoria fiscal, comptable, laboral i jurídica",
+      "en": "Tax, accounting, employment and legal advisory"
+    },
+    "description": {
+      "es": "Proyecto real entregado a un cliente: asesoría fiscal, contable, laboral y jurídica. Sitio corporativo multi-idioma en producción, con captación de leads vía formulario de contacto. El equipo y los proyectos se generan y actualizan de forma autónoma con IA (Claude) mediante una tarea programada.",
+      "ca": "Projecte real lliurat a un client: assessoria fiscal, comptable, laboral i jurídica. Web corporativa multiidioma en producció, amb captació de contactes mitjançant formulari. L'equip i els projectes es generen i s'actualitzen de manera autònoma amb IA (Claude) mitjançant una tasca programada.",
+      "en": "Real project delivered to a client: a tax, accounting, employment and legal advisory firm. Multilingual corporate website in production, with lead capture through a contact form. The team and projects are generated and updated autonomously with AI (Claude) through a scheduled task."
+    },
+    "summary": {
+      "es": "Web corporativa multi-idioma para una asesoría, con captación de clientes y contenido que se actualiza solo con IA.",
+      "ca": "Web corporativa multiidioma per a una assessoria, amb captació de clients i contingut que s'actualitza sol amb IA.",
+      "en": "Multilingual corporate website for an advisory firm, with lead capture and content that updates itself with AI."
+    },
+    "type": {
+      "es": "Web corporativa",
+      "ca": "Web corporativa",
+      "en": "Corporate website"
+    },
+    "challenge": {
+      "es": "Mas Consulting necesitaba una web corporativa que presentara sus servicios de asesoría fiscal, contable, laboral y jurídica en varios idiomas y que convirtiera las visitas en contactos.",
+      "ca": "Mas Consulting necessitava una web corporativa que presentés els seus serveis d'assessoria fiscal, comptable, laboral i jurídica en diversos idiomes i que convertís les visites en contactes.",
+      "en": "Mas Consulting needed a corporate website that presented its tax, accounting, employment and legal advisory services in several languages and turned visits into enquiries."
+    },
+    "solution": {
+      "es": "Desarrollé un sitio multi-idioma con React y TypeScript, rápido y adaptado a móvil, con un formulario de contacto para captar clientes potenciales directamente desde la web.",
+      "ca": "Vaig desenvolupar un lloc multiidioma amb React i TypeScript, ràpid i adaptat a mòbil, amb un formulari de contacte per captar clients potencials directament des de la web.",
+      "en": "I built a fast, mobile-friendly multilingual site with React and TypeScript, with a contact form to capture potential clients directly from the website."
+    },
+    "highlights": {
+      "es": [
+        "Sitio multi-idioma",
+        "Formulario de contacto para captar clientes",
+        "Diseño adaptado a móvil",
+        "Equipo actualizado con IA"
+      ],
+      "ca": [
+        "Lloc multiidioma",
+        "Formulari de contacte per captar clients",
+        "Disseny adaptat a mòbil",
+        "Equip i projectes actualitzats amb IA"
+      ],
+      "en": [
+        "Multilingual site",
+        "Contact form to capture clients",
+        "Mobile-friendly design",
+        "Team and projects updated with AI"
+      ]
+    },
+    "results": [],
+    "ai": {
+      "es": "Contenido autónomo con Claude",
+      "ca": "Contingut autònom amb Claude",
+      "en": "Autonomous content with Claude"
+    },
+    "tags": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Claude AI"
+    ],
+    "images": [
+      "/img/MasConsulting/LandingPage.webp"
+    ],
+    "screenLabels": [
+      "Landing"
+    ],
+    "status": "production",
+    "gradient": "from-amber-700 to-stone-500",
+    "color": "#F2B754",
+    "github": null,
+    "demo": "https://www.masconsulting.cat/"
+  },
+  {
+    "slug": "miquel-mas-arquitectes",
+    "title": "Miquel Mas Arquitectes",
+    "subtitle": {
+      "es": "Estudio de arquitectura en Vilanova i la Geltrú",
+      "ca": "Estudi d'arquitectura a Vilanova i la Geltrú",
+      "en": "Architecture studio in Vilanova i la Geltrú"
+    },
+    "description": {
+      "es": "Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano. El equipo y los proyectos se publican de forma autónoma gracias a la IA (Claude), mediante una tarea programada y sin necesidad de backend.",
+      "ca": "Projecte real lliurat a un client: web corporativa d'un estudi d'arquitectura. Portada amb slider a pantalla completa, catàleg de treballs realitzats, equip i contacte, en català i castellà. L'equip i els projectes es publiquen de manera autònoma gràcies a la IA (Claude), mitjançant una tasca programada i sense necessitat de backend.",
+      "en": "Real project delivered to a client: corporate website for an architecture studio. Full-screen slider on the home page, portfolio of completed work, team and contact, in Catalan and Spanish. The team and projects are published autonomously thanks to AI (Claude), through a scheduled task and with no backend needed."
+    },
+    "summary": {
+      "es": "Web de un estudio de arquitectura en catalán y castellano, con catálogo de obras; el equipo y los proyectos se publican solos con IA, sin backend.",
+      "ca": "Web d'un estudi d'arquitectura en català i castellà, amb catàleg d'obres; l'equip i els projectes es publiquen sols amb IA, sense backend.",
+      "en": "Website for an architecture studio in Catalan and Spanish, with a portfolio of works; the team and projects publish themselves with AI, with no backend."
+    },
+    "type": {
+      "es": "Web corporativa",
+      "ca": "Web corporativa",
+      "en": "Corporate website"
+    },
+    "challenge": {
+      "es": "Un estudio de arquitectura necesita que su trabajo se vea: imágenes grandes, un catálogo de obras fácil de recorrer y una forma directa de contactar, en catalán y castellano.",
+      "ca": "Un estudi d'arquitectura necessita que la seva feina es vegi: imatges grans, un catàleg d'obres fàcil de recórrer i una manera directa de contactar, en català i castellà.",
+      "en": "An architecture studio needs its work to be seen: large images, an easy-to-browse portfolio and a direct way to get in touch, in Catalan and Spanish."
+    },
+    "solution": {
+      "es": "Desarrollé una web con React y React Router: portada con slider de imágenes a pantalla completa, catálogo de trabajos realizados con ficha de cada proyecto, página de equipo y contacto con acceso directo a WhatsApp. El equipo y los proyectos se publican de forma autónoma con IA (Claude): una tarea programada genera el contenido y lo sube a la web, sin backend.",
+      "ca": "Vaig desenvolupar una web amb React i React Router: portada amb slider d'imatges a pantalla completa, catàleg de treballs realitzats amb fitxa de cada projecte, pàgina d'equip i contacte amb accés directe a WhatsApp. L'equip i els projectes es publiquen de manera autònoma amb IA (Claude): una tasca programada genera el contingut i el puja a la web, sense backend.",
+      "en": "I built a website with React and React Router: a full-screen image slider on the home page, a portfolio of completed work with a page for each project, a team page and contact with direct WhatsApp access. The team and projects are published autonomously with AI (Claude): a scheduled task generates the content and uploads it to the website, with no backend."
+    },
+    "highlights": {
+      "es": [
+        "Slider a pantalla completa en la portada",
+        "Catálogo de trabajos con ficha de detalle",
+        "Página de equipo",
+        "Contacto con botón de WhatsApp",
+        "Selector de idioma CA / ES",
+        "Equipo y proyectos publicados con IA, sin backend"
+      ],
+      "ca": [
+        "Slider a pantalla completa a la portada",
+        "Catàleg de treballs amb fitxa de detall",
+        "Pàgina d'equip",
+        "Contacte amb botó de WhatsApp",
+        "Selector d'idioma CA / ES",
+        "Equip i projectes publicats amb IA, sense backend"
+      ],
+      "en": [
+        "Full-screen slider on the home page",
+        "Portfolio with detail pages",
+        "Team page",
+        "Contact with WhatsApp button",
+        "CA / ES language switcher",
+        "Team and projects published with AI, no backend"
+      ]
+    },
+    "results": [],
+    "ai": {
+      "es": "Contenido autónomo con Claude",
+      "ca": "Contingut autònom amb Claude",
+      "en": "Autonomous content with Claude"
+    },
+    "tags": [
+      "React",
+      "Vite",
+      "React Router",
+      "i18n",
+      "Claude AI"
+    ],
+    "images": [
+      "/img/MiquelMas/LandingPage.webp"
+    ],
+    "screenLabels": [
+      "Landing"
+    ],
+    "status": "production",
+    "gradient": "from-stone-700 to-neutral-500",
+    "color": "#D6D3D1",
+    "github": null,
+    "demo": "#"
+  }
+]

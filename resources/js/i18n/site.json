@@ -1,0 +1,32 @@
+{
+  "url": "https://inakigalandev-main-i5kai4.laravel.cloud",
+  "defaultLocale": "es",
+  "locales": {
+    "es": { "label": "Español", "short": "ES", "og": "es_ES", "projectsPath": "proyectos" },
+    "ca": { "label": "Català", "short": "CA", "og": "ca_ES", "projectsPath": "projectes" },
+    "en": { "label": "English", "short": "EN", "og": "en_US", "projectsPath": "projects" }
+  },
+  "meta": {
+    "es": {
+      "title": "Iñaki Galan — Desarrollador Full Stack Laravel & React | España",
+      "description": "Desarrollador Full Stack especializado en Laravel y React. Creo aplicaciones web escalables, intranets a medida y productos digitales. Disponible para proyectos en España y remoto.",
+      "shareTitle": "Iñaki Galan — Desarrollador Full Stack Laravel & React",
+      "shareDescription": "Desarrollador Full Stack especializado en Laravel y React. Aplicaciones web escalables, intranets a medida y productos digitales.",
+      "caseStudy": "Caso de estudio"
+    },
+    "ca": {
+      "title": "Iñaki Galan — Desenvolupador Full Stack Laravel & React | Catalunya",
+      "description": "Desenvolupador Full Stack especialitzat en Laravel i React. Creo aplicacions web escalables, intranets a mida i productes digitals. Disponible per a projectes a Catalunya i en remot.",
+      "shareTitle": "Iñaki Galan — Desenvolupador Full Stack Laravel & React",
+      "shareDescription": "Desenvolupador Full Stack especialitzat en Laravel i React. Aplicacions web escalables, intranets a mida i productes digitals.",
+      "caseStudy": "Cas d'estudi"
+    },
+    "en": {
+      "title": "Iñaki Galan — Full Stack Developer, Laravel & React | Spain",
+      "description": "Full Stack Developer specialised in Laravel and React. I build scalable web applications, custom intranets and digital products. Available for projects in Spain and remotely.",
+      "shareTitle": "Iñaki Galan — Full Stack Developer, Laravel & React",
+      "shareDescription": "Full Stack Developer specialised in Laravel and React. Scalable web applications, custom intranets and digital products.",
+      "caseStudy": "Case study"
+    }
+  }
+}
