@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from '@inertiajs/react'
 import { motion } from 'motion/react'
 import { ArrowLeft, ArrowRight, ExternalLink, Sparkles, Check } from 'lucide-react'
@@ -9,6 +9,8 @@ import { trackSpotlight } from '../utils/spotlight'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import CommandPalette from '../Components/CommandPalette'
+import ProjectVideo from '../Components/ProjectVideo'
+import StatusBadge from '../Components/StatusBadge'
 import { useI18n, projectUrl, sectionUrl } from '../i18n'
 
 const CLAUDE = '#D97757'
@@ -36,6 +38,9 @@ export default function Project({ slug, pageTitle }) {
   const project = featuredProjects[index]
   const next = featuredProjects[(index + 1) % featuredProjects.length]
   const live = isLive(project.demo)
+  const labels = tr(project.screenLabels) ?? []
+  const [shot, setShot] = useState(0)
+  useEffect(() => setShot(0), [slug])
 
   // Al navegar sin recargar, Laravel no vuelve a pintar el <title>; usamos el que calcula PortfolioController
   useEffect(() => {
@@ -68,9 +73,7 @@ export default function Project({ slug, pageTitle }) {
                   <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
                 </span>
               )}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> {t(`status.${project.status}`)}
-              </span>
+              <StatusBadge status={project.status} />
             </div>
             <h1 className={`text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-4 ${dark ? 'text-white' : 'text-slate-900'}`}>
               {project.title}
@@ -82,7 +85,7 @@ export default function Project({ slug, pageTitle }) {
               {live && (
                 <a href={project.demo} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-emerald-500/20">
-                  <ExternalLink className="w-4 h-4" /> {t('project.visitSite')}
+                  <ExternalLink className="w-4 h-4" /> {project.status === 'production' ? t('project.visitSite') : t('projects.liveDemo')}
                 </a>
               )}
               {project.github && (
@@ -114,8 +117,40 @@ export default function Project({ slug, pageTitle }) {
               </span>
             )}
           </div>
-          <img src={project.images[0]} alt={`${t('project.screenshotAlt')} ${project.title}`} className="w-full block" />
+          <div className="relative">
+            {project.video ? (
+              <ProjectVideo key={project.video} src={project.video} poster={project.images[0]} label={project.title} className="w-full aspect-[16/10] object-cover block" />
+            ) : project.images.map((img, i) => (
+              <img
+                key={img}
+                src={img}
+                alt={`${t('project.screenshotAlt')} ${project.title} — ${labels[i] ?? i + 1}`}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                className={`w-full h-auto block transition-opacity duration-500 ${i === 0 ? 'relative' : 'absolute inset-0'} ${i === shot ? 'opacity-100' : 'opacity-0'}`}
+              />
+            ))}
+          </div>
         </motion.div>
+
+        {/* Pestañas para cambiar de captura */}
+        {project.images.length > 1 && (
+          <div className="max-w-6xl mx-auto mt-5 flex flex-wrap justify-center gap-2">
+            {project.images.map((img, i) => (
+              <button
+                key={img}
+                onClick={() => setShot(i)}
+                aria-pressed={i === shot}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                  i === shot
+                    ? 'bg-emerald-500 text-white'
+                    : dark ? 'bg-white/5 border border-white/10 text-slate-400 hover:text-white' : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                {labels[i] ?? i + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Reto, solución y ficha */}

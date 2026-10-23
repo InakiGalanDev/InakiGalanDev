@@ -7,11 +7,14 @@ import { useTheme } from '../context/ThemeContext'
 import { featuredProjects, isLive } from '../data/projects'
 import { trackSpotlight } from '../utils/spotlight'
 import { useI18n, projectUrl } from '../i18n'
+import ProjectVideo from './ProjectVideo'
+import StatusBadge from './StatusBadge'
 
-function ImageCarousel({ project }) {
+function ImageCarousel({ project, dark }) {
   const { locale, t, tr } = useI18n()
   const [current, setCurrent] = useState(0)
   const total = project.images.length
+  const labels = tr(project.screenLabels) ?? []
 
   useEffect(() => {
     if (total <= 1) return
@@ -21,50 +24,28 @@ function ImageCarousel({ project }) {
 
   const prev = () => setCurrent(c => (c - 1 + total) % total)
   const next = () => setCurrent(c => (c + 1) % total)
+  const muted = dark ? 'text-slate-400' : 'text-slate-600'
 
   return (
-    <div className="relative rounded-3xl overflow-hidden shadow-2xl" style={{ height: '560px' }}>
-      {/* Images */}
-      {project.images.map((img, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-        >
-          <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover object-top" />
+    <div className={`grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] gap-8 lg:gap-10 items-center rounded-3xl p-6 lg:p-8 ${
+      dark ? 'bg-white/5 border border-white/10' : 'bg-white border border-slate-100 shadow-xl'
+    }`}>
+      {/* Texto */}
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          {project.ai && (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/10">
+              <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
+            </span>
+          )}
+          <StatusBadge status={project.status} />
         </div>
-      ))}
-
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10">
-        <div className="flex items-center gap-2 mb-3">
-            {/* <div className={`inline-block px-4 py-1 bg-gradient-to-r ${project.gradient} rounded-full text-xs font-bold`}>
-                Proyecto Destacado
-            </div>
-            {project.status && (
-                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                  project.status === 'En producción'
-                    ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400'
-                    : 'bg-amber-500/20 border border-amber-500/40 text-amber-400'
-                }`}>
-                <span className={`w-1.5 h-1.5 rounded-full animate-pulse inline-block ${project.status === 'En producción' ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
-                {project.status}
-                </div>
-            )} */}
-        </div>
-        {project.ai && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/20">
-            <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
-          </div>
-        )}
-        <h3 className="text-3xl font-black mb-1">{project.title}</h3>
-        <p style={{ color: project.color }} className="text-sm font-semibold mb-3">{tr(project.subtitle)}</p>
-        <p className="text-slate-200 text-sm leading-relaxed mb-4 max-w-2xl">{tr(project.description)}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <h3 className={`text-3xl font-black mb-1 ${dark ? 'text-white' : 'text-slate-900'}`}>{project.title}</h3>
+        <p style={dark ? { color: project.color } : undefined} className={`text-sm font-semibold mb-4 ${dark ? '' : 'text-slate-500'}`}>{tr(project.subtitle)}</p>
+        <p className={`text-sm leading-relaxed mb-5 ${muted}`}>{tr(project.description)}</p>
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map(tag => (
-            <span key={tag} className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">{tag}</span>
+            <span key={tag} className="px-3 py-1 bg-emerald-400/10 text-emerald-500 rounded-full text-xs font-mono">{tag}</span>
           ))}
         </div>
         <div className="flex flex-wrap gap-3">
@@ -79,7 +60,9 @@ function ImageCarousel({ project }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-100 transition-all"
+              className={`flex items-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
+                dark ? 'bg-white text-slate-900 hover:bg-slate-100' : 'bg-slate-900 text-white hover:bg-slate-700'
+              }`}
             >
               <FaGithub size={14} /> {t('projects.viewCode')}
             </a>
@@ -89,7 +72,9 @@ function ImageCarousel({ project }) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full font-bold text-sm hover:bg-white/30 transition-all"
+              className={`flex items-center gap-2 px-5 py-2 rounded-full font-bold text-sm border transition-all ${
+                dark ? 'border-white/15 text-white hover:border-emerald-400' : 'border-slate-200 text-slate-800 hover:border-emerald-500'
+              }`}
             >
               <ExternalLink className="w-4 h-4" /> {project.status === 'production' ? t('projects.viewSite') : t('projects.liveDemo')}
             </a>
@@ -97,35 +82,42 @@ function ImageCarousel({ project }) {
         </div>
       </div>
 
-      {/* Arrows — solo si hay más de 1 imagen */}
-      {total > 1 && (
-        <>
-          <button onClick={prev} className="absolute left-4 top-4 z-20 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all">
-            <ChevronLeft className="w-4 h-4 text-slate-800" />
-          </button>
-          <button onClick={next} className="absolute right-4 top-4 z-20 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all">
-            <ChevronRight className="w-4 h-4 text-slate-800" />
-          </button>
-
-          {/* Dots */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-            {project.images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${i === current ? 'bg-white w-5' : 'bg-white/50 w-2'}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* Label */}
-      {total > 1 && (
-        <div className="absolute top-4 right-16 z-20 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full">
-          {current + 1} / {total}
+      {/* Captura completa, en su proporción real, dentro de un marco de navegador */}
+      <div className="order-first lg:order-last min-w-0 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0d1117]">
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          {isLive(project.demo) && (
+            <span className="ml-3 px-3 py-0.5 rounded-md bg-white/5 text-[11px] font-mono text-slate-400 truncate">
+              {project.demo.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+            </span>
+          )}
+          {total > 1 && <span className="ml-auto text-[11px] font-mono text-slate-500">{current + 1} / {total}</span>}
         </div>
-      )}
+        <div className="relative">
+          {project.video ? (
+            <ProjectVideo key={project.video} src={project.video} poster={project.images[0]} label={project.title} className="w-full aspect-[16/10] object-cover block" />
+          ) : project.images.map((img, i) => (
+            <img
+              key={img}
+              src={img}
+              alt={`${project.title} — ${labels[i] ?? i + 1}`}
+              className={`w-full h-auto block transition-opacity duration-700 ${i === 0 ? 'relative' : 'absolute inset-0'} ${i === current ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ))}
+          {total > 1 && (
+            <>
+              <button onClick={prev} aria-label="‹" className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all">
+                <ChevronLeft className="w-4 h-4 text-slate-800" />
+              </button>
+              <button onClick={next} aria-label="›" className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all">
+                <ChevronRight className="w-4 h-4 text-slate-800" />
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
@@ -144,8 +136,10 @@ function MobileProjects({ dark }) {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className={`rounded-2xl overflow-hidden ${dark ? 'bg-white/5 border border-white/10' : 'bg-white shadow-lg border border-slate-100'}`}
         >
-          <div className="relative h-48 overflow-hidden">
-            <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover object-top" />
+          <div className="relative overflow-hidden">
+            {project.video
+              ? <ProjectVideo src={project.video} poster={project.images[0]} label={project.title} className="w-full aspect-[16/10] object-cover block" />
+              : <img src={project.images[0]} alt={project.title} className="w-full h-auto block" />}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
             <div className="absolute bottom-3 left-4">
               <h3 className="text-xl font-black text-white">{project.title}</h3>
@@ -153,11 +147,14 @@ function MobileProjects({ dark }) {
             </div>
           </div>
           <div className="p-5">
-            {project.ai && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 mb-3 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/20">
-                <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
-              </div>
-            )}
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              {project.ai && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#D97757] text-white shadow-lg shadow-black/20">
+                  <Sparkles className="w-3.5 h-3.5" /> {tr(project.ai)}
+                </span>
+              )}
+              <StatusBadge status={project.status} />
+            </div>
             <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{tr(project.description)}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {project.tags.map(tag => (
@@ -265,7 +262,7 @@ export default function Projects() {
               transition={{ duration: 0.4 }}
               className="mb-12"
             >
-              <ImageCarousel project={featuredProjects[activeProject]} />
+              <ImageCarousel project={featuredProjects[activeProject]} dark={dark} />
             </motion.div>
 
             {/* Mini cards — solo si hay más de 1 proyecto */}

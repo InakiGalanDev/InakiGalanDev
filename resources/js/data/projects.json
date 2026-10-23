@@ -28,9 +28,9 @@
       "en": "Mas Consulting needed a corporate website that presented its tax, accounting, employment and legal advisory services in several languages and turned visits into enquiries."
     },
     "solution": {
-      "es": "Desarrollé un sitio multi-idioma con React y TypeScript, rápido y adaptado a móvil, con un formulario de contacto para captar clientes potenciales directamente desde la web.",
-      "ca": "Vaig desenvolupar un lloc multiidioma amb React i TypeScript, ràpid i adaptat a mòbil, amb un formulari de contacte per captar clients potencials directament des de la web.",
-      "en": "I built a fast, mobile-friendly multilingual site with React and TypeScript, with a contact form to capture potential clients directly from the website."
+      "es": "Desarrollé un sitio multi-idioma con React y TypeScript, rápido y adaptado a móvil, con un formulario de contacto para captar clientes potenciales directamente desde la web. Además, los diferentes colaboradores de la asesoría se añaden a la web de forma autónoma gracias a la IA (Claude), sin necesidad de backend.",
+      "ca": "Vaig desenvolupar un lloc multiidioma amb React i TypeScript, ràpid i adaptat a mòbil, amb un formulari de contacte per captar clients potencials directament des de la web. A més, els diferents col·laboradors de l'assessoria s'afegeixen a la web de manera autònoma gràcies a la IA (Claude), sense necessitat de backend.",
+      "en": "I built a fast, mobile-friendly multilingual site with React and TypeScript, with a contact form to capture potential clients directly from the website. In addition, the firm's different collaborators are added to the website autonomously thanks to AI (Claude), with no backend needed."
     },
     "highlights": {
       "es": [
@@ -68,9 +68,17 @@
     "images": [
       "/img/MasConsulting/LandingPage.webp"
     ],
-    "screenLabels": [
-      "Landing"
-    ],
+    "screenLabels": {
+      "es": [
+        "Portada"
+      ],
+      "ca": [
+        "Portada"
+      ],
+      "en": [
+        "Home"
+      ]
+    },
     "status": "production",
     "gradient": "from-amber-700 to-stone-500",
     "color": "#F2B754",
@@ -86,9 +94,9 @@
       "en": "Architecture studio in Vilanova i la Geltrú"
     },
     "description": {
-      "es": "Proyecto real entregado a un cliente: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano. El equipo y los proyectos se publican de forma autónoma gracias a la IA (Claude), mediante una tarea programada y sin necesidad de backend.",
-      "ca": "Projecte real lliurat a un client: web corporativa d'un estudi d'arquitectura. Portada amb slider a pantalla completa, catàleg de treballs realitzats, equip i contacte, en català i castellà. L'equip i els projectes es publiquen de manera autònoma gràcies a la IA (Claude), mitjançant una tasca programada i sense necessitat de backend.",
-      "en": "Real project delivered to a client: corporate website for an architecture studio. Full-screen slider on the home page, portfolio of completed work, team and contact, in Catalan and Spanish. The team and projects are published autonomously thanks to AI (Claude), through a scheduled task and with no backend needed."
+      "es": "Proyecto real para un cliente, actualmente en desarrollo: web corporativa de un estudio de arquitectura. Portada con slider a pantalla completa, catálogo de trabajos realizados, equipo y contacto, en catalán y castellano. El equipo y los proyectos se publican de forma autónoma gracias a la IA (Claude), mediante una tarea programada y sin necesidad de backend.",
+      "ca": "Projecte real per a un client, actualment en desenvolupament: web corporativa d'un estudi d'arquitectura. Portada amb slider a pantalla completa, catàleg de treballs realitzats, equip i contacte, en català i castellà. L'equip i els projectes es publiquen de manera autònoma gràcies a la IA (Claude), mitjançant una tasca programada i sense necessitat de backend.",
+      "en": "Real project for a client, currently in development: corporate website for an architecture studio. Full-screen slider on the home page, portfolio of completed work, team and contact, in Catalan and Spanish. The team and projects are published autonomously thanks to AI (Claude), through a scheduled task and with no backend needed."
     },
     "summary": {
       "es": "Web de un estudio de arquitectura en catalán y castellano, con catálogo de obras; el equipo y los proyectos se publican solos con IA, sin backend.",
@@ -152,13 +160,22 @@
     "images": [
       "/img/MiquelMas/LandingPage.webp"
     ],
-    "screenLabels": [
-      "Landing"
-    ],
-    "status": "production",
+    "screenLabels": {
+      "es": [
+        "Portada"
+      ],
+      "ca": [
+        "Portada"
+      ],
+      "en": [
+        "Home"
+      ]
+    },
+    "status": "development",
     "gradient": "from-stone-700 to-neutral-500",
     "color": "#D6D3D1",
     "github": null,
-    "demo": "#"
+    "demo": "https://miquelmas.vercel.app/",
+    "video": "/video/MiquelMas/home.mp4"
   }
 ]
